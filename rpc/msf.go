@@ -45,11 +45,11 @@ func (msf *Metasploit) send(req interface{}, res interface{}) error {
 	}
 	defer response.Body.Close()
 
-	if msf.debug{
-		log.Printf("%+v\n", response.Body)
-		//log.Printf("Response body: %s\n", response.Body)
-	}
 	if err := msgpack.NewDecoder(response.Body).Decode(&res); err != nil {
+		if msf.debug{
+			log.Printf("BODY_ERROR: %+v\n", response.Body)
+			//log.Printf("Response body: %s\n", response.Body)
+		}
 		return err
 	}
 	return nil
