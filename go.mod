@@ -1,4 +1,4 @@
-module github.com/neyromanser/go-msf-rpc
+module github.com/neyromanser/go-msf
 
 go 1.16
 
