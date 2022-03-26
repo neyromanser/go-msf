@@ -6,3 +6,9 @@ Golang based RPC client to communicate with Metasploit. Based on code initially 
 
 ### Reference
 https://wya.pl/2020/04/27/metasploits-rpc-api/
+
+### mod update  
+git add . && git commit -m "update..."   
+git tag -a v1.0.1 -m "patch .... "   
+git push origin master --tags   
+
