@@ -4,11 +4,9 @@ import (
 	"bytes"
 	"crypto/tls"
 	"fmt"
+	"gopkg.in/vmihailenco/msgpack.v2"
 	"log"
 	"net/http"
-	"net/http/httputil"
-
-	"gopkg.in/vmihailenco/msgpack.v2"
 )
 
 type Metasploit struct {
@@ -38,8 +36,8 @@ func (msf *Metasploit) send(req interface{}, res interface{}) error {
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	dest := fmt.Sprintf("%s/api", msf.host)
 	response, err := http.Post(dest, "binary/message-pack", buf)
-	responseBytes, _ := httputil.DumpResponse(response, true)
-	log.Printf("Response dump: %s\n", string(responseBytes))
+	//responseBytes, _ := httputil.DumpResponse(response, true)
+	//log.Printf("Response dump: %s\n", string(responseBytes))
 	if err != nil {
 		return err
 	}
