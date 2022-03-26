@@ -6,7 +6,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/fpr1m3/go-msf-rpc/rpc"
+	//"github.com/fpr1m3/go-msf-rpc/rpc"
+	"github.com/neyromanser/go-msf-rpc/rpc"
 )
 
 func checkErr(reason string, err error) bool {
