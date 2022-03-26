@@ -5,6 +5,7 @@ import (
 	"github.com/neyromanser/go-msf/rpc"
 	"log"
 	"os"
+	"strconv"
 	"time"
 )
 
@@ -26,6 +27,7 @@ func main() {
 	host := os.Getenv("MSFHOST")
 	user := os.Getenv("MSFUSER")
 	pass := os.Getenv("MSFPASS")
+	debug, _ := strconv.ParseBool(os.Getenv("MSFDEBUG"))
 
 	for _, val := range []string{host, user, pass} {
 		if len(val) == 0 {
@@ -33,7 +35,7 @@ func main() {
 		}
 	}
 
-	msf, err := rpc.New(host, user, pass)
+	msf, err := rpc.New(host, user, pass, debug)
 	if err != nil {
 		log.Panicln(err)
 	}

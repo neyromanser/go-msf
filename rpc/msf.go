@@ -14,13 +14,15 @@ type Metasploit struct {
 	user  string
 	pass  string
 	token string
+	debug bool
 }
 
-func New(host, user, pass string) (*Metasploit, error) {
+func New(host, user, pass string, debug bool) (*Metasploit, error) {
 	msf := &Metasploit{
 		host: host,
 		user: user,
 		pass: pass,
+		debug: debug,
 	}
 
 	if err := msf.Login(); err != nil {
@@ -43,7 +45,9 @@ func (msf *Metasploit) send(req interface{}, res interface{}) error {
 	}
 	defer response.Body.Close()
 
-	log.Printf("Response body: %s\n", response.Body)
+	if msf.debug{
+		log.Printf("Response body: %s\n", response.Body)
+	}
 	if err := msgpack.NewDecoder(response.Body).Decode(&res); err != nil {
 		return err
 	}
