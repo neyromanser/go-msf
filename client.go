@@ -2,12 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/neyromanser/go-msf/rpc"
 	"log"
 	"os"
 	"time"
-
-	//"github.com/fpr1m3/go-msf-rpc/rpc"
-	"github.com/neyromanser/go-msf-rpc/rpc"
 )
 
 func checkErr(reason string, err error) bool {
